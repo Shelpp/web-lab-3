@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Задание 3 — Flex Box, Media Query, Mobile First</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <svg class="logo" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="Логотип">
+        <rect width="48" height="48" rx="10" fill="#ffffff"/>
+        <path d="M12 34V14h8a6 6 0 0 1 0 12h-8m16 8V14m0 10 10-10m-10 10 10 10"
+              fill="none" stroke="#1d4e89" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1 class="site-title">Название сайта</h1>
+    </header>
+
+    <nav class="nav" aria-label="Главное меню">
+      <ul class="menu">
+        <li><a href="#">Ссылка меню 1</a></li>
+        <li><a href="#">Ссылка 2</a></li>
+        <li><a href="#">Ссылка 3</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <!-- В потоке HTML список ссылок идёт ДО таблицы -->
+      <section class="block block-links" aria-labelledby="links-title">
+        <h2 id="links-title">Список гиперссылок</h2>
+        <ul class="links">
+          <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_flexible_box_layout">Flex Box — MDN</a></li>
+          <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_media_queries">Media Queries — MDN</a></li>
+          <li><a href="https://validator.w3.org/">Валидатор HTML (W3C)</a></li>
+          <li><a href="https://pages.github.com/">GitHub Pages</a></li>
+        </ul>
+      </section>
+
+      <section class="block block-table" aria-labelledby="table-title">
+        <h2 id="table-title">Таблица</h2>
+        <div class="table-wrap">
+          <table>
+            <caption class="visually-hidden">Сравнение подходов к вёрстке</caption>
+            <thead>
+              <tr>
+                <th scope="col">Подход</th>
+                <th scope="col">Раскладка</th>
+                <th scope="col">Баллы</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Flex Box</td><td>Одномерная</td><td>10</td></tr>
+              <tr><td>Media Query</td><td>По ширине экрана</td><td>10</td></tr>
+              <tr><td>Flex Box order</td><td>Порядок блоков</td><td>10</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block block-form" aria-labelledby="form-title">
+        <h2 id="form-title">Форма</h2>
+        <form action="#" method="post">
+          <div class="field">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Электронная почта</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="message">Сообщение</label>
+            <textarea id="message" name="message" rows="3"></textarea>
+          </div>
+          <button type="submit">Отправить</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; Сергей Синица</p>
+    </footer>
+
+  </div>
+</body>
+</html>

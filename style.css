@@ -1,0 +1,195 @@
+/* ===== Задание 3: Mobile First + Flex Box + Media Query ===== */
+
+/* ---------- 1. БАЗА: правила для смартфонов (портрет) грузятся первыми ---------- */
+:root {
+  --ink: #1b2430;
+  --paper: #eef2f7;
+  --panel: #ffffff;
+  --blue: #1d4e89;
+  --blue-light: #dbe7f5;
+  --line: #b9c7d8;
+  --gap: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a { color: var(--blue); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid #f0a202;
+  outline-offset: 2px;
+}
+
+/* Страница: колонка Flex, всё занимает 100% ширины экрана */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  gap: var(--gap);
+  padding: var(--gap);
+}
+
+/* header: лого + название */
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 6px;
+}
+.logo { flex: 0 0 auto; }
+.site-title {
+  flex: 1;
+  margin: 0;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+/* nav: на смартфоне ссылки вертикальным списком */
+.nav {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 8px 16px;
+  list-style: none;
+}
+.menu a {
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+.menu a:hover { text-decoration: underline; }
+
+/* content: колонка блоков */
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--gap);
+}
+
+.block {
+  padding: 12px 16px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.block h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+/* Flex Box order: в HTML список ссылок идёт раньше таблицы,
+   на смартфоне таблица визуально выше списка (order меньше). */
+.block-table { order: 1; }
+.block-links { order: 2; }
+.block-form  { order: 3; }
+
+.links { margin: 0; padding-left: 20px; }
+.links li { margin-bottom: 4px; }
+
+/* таблица */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  padding: 6px 8px;
+  text-align: left;
+  border: 1px solid var(--line);
+}
+th { background: var(--blue-light); }
+
+/* форма */
+.field { display: flex; flex-direction: column; margin-bottom: 10px; }
+label { margin-bottom: 4px; font-size: 0.95rem; }
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+button {
+  padding: 10px 20px;
+  font: inherit;
+  color: #fff;
+  background: var(--blue);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover { background: #163c6b; }
+
+/* footer */
+.footer {
+  padding: 24px 16px;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 6px;
+}
+.footer p { margin: 0; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- 2. ПЛАНШЕТЫ: от 768px ---------- */
+@media screen and (min-width: 768px) {
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 16px;
+  }
+  .site-title { font-size: 1.6rem; }
+
+  /* меню в строку */
+  .menu {
+    flex-direction: row;
+    gap: 28px;
+    padding: 4px 20px;
+  }
+
+  /* контент в две колонки: таблица и список рядом, форма ниже на всю ширину */
+  .content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .block-table { flex: 3 1 340px; order: 2; }
+  .block-links { flex: 2 1 220px; order: 1; }   /* как в HTML: список ссылок слева */
+  .block-form  { flex: 1 1 100%; order: 3; }
+}
+
+/* ---------- 3. ДЕСКТОПЫ: от 1024px ---------- */
+@media screen and (min-width: 1024px) {
+  .page { padding: 28px; gap: 20px; }
+
+  /* три блока контента в один ряд */
+  .content { flex-wrap: nowrap; gap: 20px; }
+  .block-links { flex: 1; }
+  .block-table { flex: 2; }
+  .block-form  { flex: 1.3; }
+}
