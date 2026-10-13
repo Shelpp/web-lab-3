@@ -1,88 +1,318 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Задание 3 — Flex Box, Media Query, Mobile First</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задание 3 — Адаптивная вёрстка</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="page">
 
-    <header class="header">
-      <svg class="logo" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="Логотип">
-        <rect width="48" height="48" rx="10" fill="#ffffff"/>
-        <path d="M12 34V14h8a6 6 0 0 1 0 12h-8m16 8V14m0 10 10-10m-10 10 10 10"
-              fill="none" stroke="#1d4e89" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <h1 class="site-title">Название сайта</h1>
-    </header>
+  <header id="site-header">
+    <div class="container header-inner">
+      <img class="logo" src="logo.jpg" alt="Логотип сайта" width="50" height="50">
+      <h1 class="site-title">Лабораторная работа 3</h1>
+    </div>
+  </header>
 
-    <nav class="nav" aria-label="Главное меню">
-      <ul class="menu">
-        <li><a href="#">Ссылка меню 1</a></li>
-        <li><a href="#">Ссылка 2</a></li>
-        <li><a href="#">Ссылка 3</a></li>
+  <nav id="main-nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="#form-section">Форма</a></li>
+        <li><a href="#data-table">Таблица</a></li>
+        <li><a href="https://kubsu.ru/">КубГУ</a></li>
       </ul>
-    </nav>
+    </div>
+  </nav>
 
-    <main class="content">
-      <!-- В потоке HTML список ссылок идёт ДО таблицы -->
-      <section class="block block-links" aria-labelledby="links-title">
-        <h2 id="links-title">Список гиперссылок</h2>
-        <ul class="links">
-          <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_flexible_box_layout">Flex Box — MDN</a></li>
-          <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_media_queries">Media Queries — MDN</a></li>
-          <li><a href="https://validator.w3.org/">Валидатор HTML (W3C)</a></li>
-          <li><a href="https://pages.github.com/">GitHub Pages</a></li>
-        </ul>
-      </section>
-
-      <section class="block block-table" aria-labelledby="table-title">
-        <h2 id="table-title">Таблица</h2>
-        <div class="table-wrap">
-          <table>
-            <caption class="visually-hidden">Сравнение подходов к вёрстке</caption>
-            <thead>
-              <tr>
-                <th scope="col">Подход</th>
-                <th scope="col">Раскладка</th>
-                <th scope="col">Баллы</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Flex Box</td><td>Одномерная</td><td>10</td></tr>
-              <tr><td>Media Query</td><td>По ширине экрана</td><td>10</td></tr>
-              <tr><td>Flex Box order</td><td>Порядок блоков</td><td>10</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="block block-form" aria-labelledby="form-title">
-        <h2 id="form-title">Форма</h2>
-        <form action="#" method="post">
-          <div class="field">
-            <label for="name">Имя</label>
-            <input type="text" id="name" name="name" autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="email">Электронная почта</label>
-            <input type="email" id="email" name="email" autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="message">Сообщение</label>
-            <textarea id="message" name="message" rows="3"></textarea>
-          </div>
-          <button type="submit">Отправить</button>
-        </form>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>&copy; Чуприн Артем</p>
-    </footer>
-
+  <div class="container">
+    <img src="image.jpg" alt="Декоративное фото" class="banner-img">
   </div>
+
+  <main id="content" class="container">
+
+    <!-- В потоке HTML список ссылок стоит ПЕРЕД таблицей -->
+    <section id="links-section">
+      <h2>Нумерованный список гиперссылок</h2>
+
+      <ol>
+        <li>
+          Абсолютная ссылка на главную страницу сайта (http):
+          <a href="http://kubsu.ru/">КубГУ</a>
+        </li>
+
+        <li>
+          Абсолютная ссылка на главную страницу сайта (https):
+          <a href="https://kubsu.ru/">КубГУ (https)</a>
+        </li>
+
+        <li>
+          Ссылка-изображение:
+          <a href="https://kubsu.ru/">
+            <img src="image.jpg" alt="Цветок" class="link-img" width="100" height="100">
+          </a>
+        </li>
+
+        <li>
+          Сокращённая ссылка на внутреннюю страницу:
+          <a href="/about/">О сайте</a>
+        </li>
+
+        <li>
+          Сокращённая ссылка на главную страницу:
+          <a href="/">Главная</a>
+        </li>
+
+        <li>
+          Ссылка на фрагмент текущей страницы (переход к форме):
+          <a href="#form-section">Перейти к форме</a>
+        </li>
+
+        <li>
+          Ссылка с тремя параметрами в URL:
+          <a href="/search?query=web&amp;sort=asc&amp;page=1">Поиск с параметрами</a>
+        </li>
+
+        <li>
+          Ссылка с параметром id в URL:
+          <a href="/item?id=42">Товар №42</a>
+        </li>
+
+        <li>
+          Относительная ссылка на страницу в текущем каталоге:
+          <a href="./contacts.html">Контакты</a>
+        </li>
+
+        <li>
+          Относительная ссылка на страницу в каталоге about:
+          <a href="./about/index.html">О нас</a>
+        </li>
+
+        <li>
+          Относительная ссылка на страницу в каталоге уровнем выше:
+          <a href="../index.html">На уровень выше</a>
+        </li>
+
+        <li>
+          Относительная ссылка на страницу двумя уровнями выше:
+          <a href="../../index.html">На два уровня выше</a>
+        </li>
+
+        <li>
+          Контекстная ссылка в тексте абзаца: подробнее о верстке форм можно
+          прочитать в <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/form">документации MDN по элементу form</a>,
+          которая пригодится при выполнении задания.
+        </li>
+
+        <li>
+          Ссылка на фрагмент страницы стороннего сайта:
+          <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#%D1%82%D0%B8%D0%BF%D1%8B_%3Cinput%3E">Типы input на MDN</a>
+        </li>
+
+        <li>
+          Ссылки из областей картинки (тег map):
+          <img src="image.jpg" alt="Карта ссылок" usemap="#linkmap" class="map-img" width="300" height="100">
+          <map name="linkmap">
+            <area shape="rect" coords="0,0,150,100" href="https://kubsu.ru/" alt="Прямоугольная область">
+            <area shape="circle" coords="230,50,40" href="https://developer.mozilla.org/" alt="Круглая область">
+          </map>
+        </li>
+
+        <li>
+          Ссылка с пустым href:
+          <a href="">Пустая ссылка</a>
+        </li>
+
+        <li>
+          Ссылка без href:
+          <a>Ссылка без href</a>
+        </li>
+
+        <li>
+          Ссылка, по которой запрещён переход поисковикам (rel="nofollow"):
+          <a href="https://example.com/promo" rel="nofollow">Партнёрская ссылка</a>
+        </li>
+
+        <li>
+          Ссылка, запрещённая для индексации поисковиками:
+          <!--noindex-->
+          <a href="https://example.com/private">Непубличная страница</a>
+          <!--/noindex-->
+        </li>
+
+        <li>
+          Нумерованный список ссылок с подписями title:
+          <ol>
+            <li><a href="/docs/html" title="Справочник по языку HTML">HTML</a></li>
+            <li><a href="/docs/css" title="Справочник по каскадным таблицам стилей">CSS</a></li>
+            <li><a href="/docs/js" title="Справочник по языку JavaScript">JavaScript</a></li>
+          </ol>
+        </li>
+
+        <li>
+          Ссылка на файл на FTP-сервере с авторизацией:
+          <a href="ftp://user:password@ftp.example.com/files/report.pdf">Скачать файл по FTP</a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- На смартфоне эта секция визуально поднимается выше списка ссылок (Flex order) -->
+    <section id="table-section">
+      <h2>Таблица</h2>
+      <div class="table-wrap">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Колонка 1</th>
+              <th>Колонка 2</th>
+              <th>Колонка 3</th>
+              <th>Колонка 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-odd">
+              <td colspan="4">Ячейка 1 Столбец 1-4</td>
+            </tr>
+            <tr class="row-even">
+              <td>Ячейка 2 Столбец 1</td>
+              <td>Ячейка 2 Столбец 2</td>
+              <td>Ячейка 2 Столбец 3</td>
+              <td>Ячейка 2 Столбец 4</td>
+            </tr>
+            <tr class="row-odd">
+              <td>Ячейка 3 Столбец 1</td>
+              <td colspan="2">Ячейка 3 Столбец 2-3</td>
+              <td>Ячейка 3 Столбец 4</td>
+            </tr>
+            <tr class="row-even">
+              <td>Ячейка 4 Столбец 1</td>
+              <td>Ячейка 4 Столбец 2</td>
+              <td>Ячейка 4 Столбец 3</td>
+              <td>Ячейка 4 Столбец 4</td>
+            </tr>
+            <tr class="row-odd">
+              <td>Ячейка 5 Столбец 1</td>
+              <td>Ячейка 5 Столбец 2</td>
+              <td>Ячейка 5 Столбец 3</td>
+              <td>Ячейка 5 Столбец 4</td>
+            </tr>
+            <tr class="row-even">
+              <td colspan="4">Ячейка 6 Столбец 1-4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="form-section">
+      <h2>Форма</h2>
+
+      <form action="/" method="post" class="form">
+
+        <div class="field">
+          <label for="full-name">ФИО</label>
+          <input type="text" id="full-name" name="full-name" placeholder="Введите ФИО"
+                 pattern="[A-Za-zА-Яа-яЁё\s\-]+" title="Разрешены только буквы, пробел и дефис">
+        </div>
+
+        <div class="field">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="79991234567"
+                 pattern="[0-9]+" title="Разрешены только цифры">
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="Введите вашу почту"
+                 pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                 title="Адрес должен содержать символ @, например name@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="birth-date">Дата рождения</label>
+          <input type="date" id="birth-date" name="birth-date" title="Дата рождения не может быть в будущем">
+        </div>
+
+        <fieldset class="field field-wide">
+          <legend>Пол</legend>
+          <label class="inline"><input type="radio" name="gender" value="male" checked> Мужской</label>
+          <label class="inline"><input type="radio" name="gender" value="female"> Женский</label>
+        </fieldset>
+
+        <div class="field">
+          <label for="fav-lang">Любимый язык программирования (можно выбрать несколько)</label>
+          <select id="fav-lang" name="fav-lang[]" multiple size="6">
+            <option value="Pascal">Pascal</option>
+            <option value="C">C</option>
+            <option value="C++">C++</option>
+            <option value="JavaScript" selected>JavaScript</option>
+            <option value="PHP">PHP</option>
+            <option value="Python" selected>Python</option>
+            <option value="Java">Java</option>
+            <option value="Haskell">Haskell</option>
+            <option value="Clojure">Clojure</option>
+            <option value="Prolog">Prolog</option>
+            <option value="Scala">Scala</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="biography">Биография</label>
+          <textarea id="biography" name="biography" rows="6"></textarea>
+        </div>
+
+        <div class="field field-wide">
+          <label class="inline">
+            <input type="checkbox" name="contract-agreed" required title="Необходимо подтвердить ознакомление с контрактом">
+            С контрактом ознакомлен(а)
+          </label>
+        </div>
+
+        <div class="field field-wide">
+          <button type="submit" class="btn-submit">Сохранить</button>
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer id="site-footer">
+    <div class="container">
+      <p>&copy; Анастасия Куликова</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // ФИО: только буквы, пробел и дефис
+      var name = document.getElementById('full-name');
+      name.addEventListener('input', function () {
+        name.value = name.value.replace(/[^A-Za-zА-Яа-яЁё\s\-]/g, '');
+      });
+
+      // Телефон: только цифры
+      var phone = document.getElementById('phone');
+      phone.addEventListener('input', function () {
+        phone.value = phone.value.replace(/[^0-9]/g, '');
+      });
+
+      // Дата рождения: не позже сегодняшнего дня
+      var birth = document.getElementById('birth-date');
+      var d = new Date();
+      var today = d.getFullYear() + '-' +
+        String(d.getMonth() + 1).padStart(2, '0') + '-' +
+        String(d.getDate()).padStart(2, '0');
+      birth.max = today;
+      birth.addEventListener('input', function () {
+        if (birth.value > today) {
+          birth.value = today;
+        }
+      });
+    })();
+  </script>
 </body>
+
 </html>
