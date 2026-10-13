@@ -351,3 +351,17 @@ img {
     height: 260px;
   }
 }
+
+/* Сообщение после отправки формы */
+.form-status {
+  margin: 0;
+  padding: 10px 12px;
+  color: #dbebff;
+  background-color: #14305a;
+  border-left: 4px solid #6cb0ff;
+  border-radius: 4px;
+}
+
+.form-status[hidden] {
+  display: none;
+}
