@@ -15,19 +15,20 @@
 }
 
 body {
+  color-scheme: dark;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: #5a3540;
-  background-color: #fdf4f5;
+  color: #dbe4f0;
+  background-color: #0b1626;
   line-height: 1.5;
 }
 
 a {
-  color: #b5607a;
+  color: #6cb0ff;
 }
 
 a:hover {
-  color: #8a3d54;
+  color: #a9d2ff;
 }
 
 img {
@@ -43,7 +44,7 @@ img {
 
 /* Шапка */
 #site-header {
-  background-color: #f6dde2;
+  background-color: #0a1424;
   padding: 8px 0;
 }
 
@@ -63,12 +64,12 @@ img {
 .site-title {
   margin: 0;
   font-size: 1.25rem;
-  color: #a24d63;
+  color: #8ec5ff;
 }
 
 /* Меню: вертикальный список */
 #main-nav {
-  background-color: #eec2cd;
+  background-color: #14305a;
 }
 
 .nav-list {
@@ -82,10 +83,10 @@ img {
 .nav-list a {
   display: block;
   padding: 10px 0;
-  color: #6d2f42;
+  color: #cfe0f5;
   font-weight: 500;
   text-decoration: none;
-  border-bottom: 1px solid rgba(109, 47, 66, 0.15);
+  border-bottom: 1px solid rgba(207, 224, 245, 0.15);
 }
 
 .nav-list li:last-child a {
@@ -134,8 +135,8 @@ img {
 #content h2 {
   margin: 0 0 12px;
   font-size: 1.25rem;
-  color: #a24d63;
-  border-bottom: 2px solid #eec2cd;
+  color: #8ec5ff;
+  border-bottom: 2px solid #2b4a73;
 }
 
 #links-section ol {
@@ -178,21 +179,21 @@ img {
 #data-table th,
 #data-table td {
   padding: 8px;
-  border: 1px solid #eec2cd;
+  border: 1px solid #2b4a73;
   text-align: left;
 }
 
 #data-table thead th {
-  background-color: #d98fa0;
+  background-color: #1f4a8a;
   color: #ffffff;
 }
 
 #data-table .row-odd {
-  background-color: #fdf1f3;
+  background-color: #132740;
 }
 
 #data-table .row-even {
-  background-color: #f8dfe4;
+  background-color: #183151;
 }
 
 /* Форма: на смартфоне поля друг под другом */
@@ -234,8 +235,8 @@ img {
   padding: 8px;
   font: inherit;
   color: inherit;
-  background-color: #ffffff;
-  border: 1px solid #eec2cd;
+  background-color: #0f2038;
+  border: 1px solid #2b4a73;
   border-radius: 4px;
 }
 
@@ -243,8 +244,8 @@ img {
 .field select:focus,
 .field textarea:focus {
   outline: 0;
-  border-color: #d98fa0;
-  box-shadow: 0 0 0 0.2rem rgba(217, 143, 160, 0.25);
+  border-color: #4a8fe8;
+  box-shadow: 0 0 0 0.2rem rgba(74, 143, 232, 0.3);
 }
 
 .btn-submit {
@@ -253,20 +254,20 @@ img {
   padding: 10px 20px;
   font: inherit;
   color: #ffffff;
-  background-color: #d98fa0;
-  border: 1px solid #d98fa0;
+  background-color: #2f6fd0;
+  border: 1px solid #2f6fd0;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .btn-submit:hover {
-  background-color: #b5607a;
-  border-color: #b5607a;
+  background-color: #1d4f9c;
+  border-color: #1d4f9c;
 }
 
 /* Подвал */
 #site-footer {
-  background-color: #f6dde2;
+  background-color: #0a1424;
   padding: 12px 0;
   text-align: center;
 }
