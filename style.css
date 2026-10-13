@@ -1,195 +1,352 @@
-/* ===== Задание 3: Mobile First + Flex Box + Media Query ===== */
+/* ==========================================================
+   Задание 3: адаптивная вёрстка, Mobile First, Flex Box, Media Query.
 
-/* ---------- 1. БАЗА: правила для смартфонов (портрет) грузятся первыми ---------- */
-:root {
-  --ink: #1b2430;
-  --paper: #eef2f7;
-  --panel: #ffffff;
-  --blue: #1d4e89;
-  --blue-light: #dbe7f5;
-  --line: #b9c7d8;
-  --gap: 12px;
+   1) Сначала идут базовые правила для смартфонов (портрет):
+      всё в одну колонку, на 100% ширины, меню — вертикальный список,
+      таблица визуально выше списка ссылок (flex order).
+   2) Затем через @media (min-width) добавляются правила для
+      планшетов (>= 768px) и десктопов (>= 1024px).
+   ========================================================== */
+
+/* ---------- БАЗА (смартфоны) ---------- */
+
+* {
+  box-sizing: border-box;
 }
-
-*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #5a3540;
+  background-color: #fdf4f5;
   line-height: 1.5;
-  color: var(--ink);
-  background: var(--paper);
 }
 
-a { color: var(--blue); }
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 3px solid #f0a202;
-  outline-offset: 2px;
+a {
+  color: #b5607a;
 }
 
-/* Страница: колонка Flex, всё занимает 100% ширины экрана */
-.page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+a:hover {
+  color: #8a3d54;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Контейнер: на смартфоне — 100% ширины экрана */
+.container {
   width: 100%;
-  gap: var(--gap);
-  padding: var(--gap);
+  padding: 0 12px;
 }
 
-/* header: лого + название */
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 16px;
-  color: #fff;
-  background: var(--blue);
-  border-radius: 6px;
+/* Шапка */
+#site-header {
+  background-color: #f6dde2;
+  padding: 8px 0;
 }
-.logo { flex: 0 0 auto; }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .site-title {
-  flex: 1;
   margin: 0;
   font-size: 1.25rem;
-  text-align: center;
+  color: #a24d63;
 }
 
-/* nav: на смартфоне ссылки вертикальным списком */
-.nav {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 6px;
+/* Меню: вертикальный список */
+#main-nav {
+  background-color: #eec2cd;
 }
-.menu {
+
+.nav-list {
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 8px 16px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.menu a {
-  display: block;
-  padding: 8px 0;
-  text-decoration: none;
-  font-size: 1.05rem;
-}
-.menu a:hover { text-decoration: underline; }
 
-/* content: колонка блоков */
-.content {
+.nav-list a {
+  display: block;
+  padding: 10px 0;
+  color: #6d2f42;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(109, 47, 66, 0.15);
+}
+
+.nav-list li:last-child a {
+  border-bottom: 0;
+}
+
+.nav-list a:hover {
+  color: #ffffff;
+}
+
+/* Баннер */
+.banner-img {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 6px;
+  margin: 12px 0;
+}
+
+/* Основной контент: flex-колонка, порядок секций меняется через order */
+#content {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  gap: var(--gap);
+  margin-bottom: 24px;
 }
 
-.block {
-  padding: 12px 16px 16px;
-  background: var(--panel);
-  border: 1px solid var(--line);
+#content section {
+  margin-bottom: 24px;
+}
+
+/* Смартфон: таблица -> ссылки -> форма */
+#table-section {
+  order: 1;
+}
+
+#links-section {
+  order: 2;
+}
+
+#form-section {
+  order: 3;
+}
+
+#content h2 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+  color: #a24d63;
+  border-bottom: 2px solid #eec2cd;
+}
+
+#links-section ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+#links-section li {
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+.link-img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 6px;
 }
-.block h2 {
-  margin: 0 0 8px;
-  font-size: 1.1rem;
+
+.map-img {
+  display: block;
+  width: 300px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
-/* Flex Box order: в HTML список ссылок идёт раньше таблицы,
-   на смартфоне таблица визуально выше списка (order меньше). */
-.block-table { order: 1; }
-.block-links { order: 2; }
-.block-form  { order: 3; }
+/* Таблица: на узком экране прокручивается внутри обёртки */
+.table-wrap {
+  overflow-x: auto;
+}
 
-.links { margin: 0; padding-left: 20px; }
-.links li { margin-bottom: 4px; }
+#data-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+}
 
-/* таблица */
-.table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; }
-th, td {
-  padding: 6px 8px;
+#data-table th,
+#data-table td {
+  padding: 8px;
+  border: 1px solid #eec2cd;
   text-align: left;
-  border: 1px solid var(--line);
 }
-th { background: var(--blue-light); }
 
-/* форма */
-.field { display: flex; flex-direction: column; margin-bottom: 10px; }
-label { margin-bottom: 4px; font-size: 0.95rem; }
-input, textarea {
+#data-table thead th {
+  background-color: #d98fa0;
+  color: #ffffff;
+}
+
+#data-table .row-odd {
+  background-color: #fdf1f3;
+}
+
+#data-table .row-even {
+  background-color: #f8dfe4;
+}
+
+/* Форма: на смартфоне поля друг под другом */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.field label,
+.field legend {
+  font-weight: 500;
+  padding: 0;
+}
+
+.field label.inline {
+  display: inline-block;
+  margin-right: 16px;
+  font-weight: 400;
+}
+
+.field input[type="text"],
+.field input[type="tel"],
+.field input[type="email"],
+.field input[type="date"],
+.field select,
+.field textarea {
   width: 100%;
   padding: 8px;
   font: inherit;
-  border: 1px solid var(--line);
+  color: inherit;
+  background-color: #ffffff;
+  border: 1px solid #eec2cd;
   border-radius: 4px;
 }
-button {
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 0;
+  border-color: #d98fa0;
+  box-shadow: 0 0 0 0.2rem rgba(217, 143, 160, 0.25);
+}
+
+.btn-submit {
+  align-self: flex-start;
+  width: 100%;
   padding: 10px 20px;
   font: inherit;
-  color: #fff;
-  background: var(--blue);
-  border: 0;
+  color: #ffffff;
+  background-color: #d98fa0;
+  border: 1px solid #d98fa0;
   border-radius: 4px;
   cursor: pointer;
 }
-button:hover { background: #163c6b; }
 
-/* footer */
-.footer {
-  padding: 24px 16px;
-  color: #fff;
-  background: var(--blue);
-  border-radius: 6px;
-}
-.footer p { margin: 0; }
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+.btn-submit:hover {
+  background-color: #b5607a;
+  border-color: #b5607a;
 }
 
-/* ---------- 2. ПЛАНШЕТЫ: от 768px ---------- */
-@media screen and (min-width: 768px) {
-  .page {
-    max-width: 1100px;
+/* Подвал */
+#site-footer {
+  background-color: #f6dde2;
+  padding: 12px 0;
+  text-align: center;
+}
+
+#site-footer p {
+  margin: 0;
+}
+
+/* ---------- ПЛАНШЕТЫ (от 768px) ---------- */
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 960px;
     margin: 0 auto;
-    padding: 20px;
-    gap: 16px;
+    padding: 0 16px;
   }
-  .site-title { font-size: 1.6rem; }
 
-  /* меню в строку */
-  .menu {
+  #site-header {
+    padding: 12px 0;
+  }
+
+  .site-title {
+    font-size: 1.5rem;
+  }
+
+  /* Меню в одну строку */
+  .nav-list {
     flex-direction: row;
-    gap: 28px;
-    padding: 4px 20px;
+    gap: 24px;
   }
 
-  /* контент в две колонки: таблица и список рядом, форма ниже на всю ширину */
-  .content {
+  .nav-list a {
+    padding: 12px 0;
+    border-bottom: 0;
+  }
+
+  .banner-img {
+    height: 220px;
+    margin: 16px 0;
+  }
+
+  /* Исходный порядок из HTML: ссылки -> таблица -> форма */
+  #links-section,
+  #table-section,
+  #form-section {
+    order: 0;
+  }
+
+  #data-table {
+    min-width: 0;
+  }
+
+  /* Форма в две колонки */
+  .form {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
   }
-  .block-table { flex: 3 1 340px; order: 2; }
-  .block-links { flex: 2 1 220px; order: 1; }   /* как в HTML: список ссылок слева */
-  .block-form  { flex: 1 1 100%; order: 3; }
+
+  .field {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .field-wide {
+    flex-basis: 100%;
+  }
+
+  .btn-submit {
+    width: auto;
+  }
 }
 
-/* ---------- 3. ДЕСКТОПЫ: от 1024px ---------- */
-@media screen and (min-width: 1024px) {
-  .page { padding: 28px; gap: 20px; }
+/* ---------- ДЕСКТОПЫ (от 1024px) ---------- */
+@media (min-width: 1024px) {
 
-  /* три блока контента в один ряд */
-  .content { flex-wrap: nowrap; gap: 20px; }
-  .block-links { flex: 1; }
-  .block-table { flex: 2; }
-  .block-form  { flex: 1.3; }
+  .container {
+    max-width: 1100px;
+  }
+
+  .banner-img {
+    height: 260px;
+  }
 }
